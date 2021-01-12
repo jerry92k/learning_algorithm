@@ -50,7 +50,7 @@ let twoSum = function(nums, target) {
     }
 };
 
-let twoSumWtHash = function(nums, target) {
+let SumWtHash = function(nums, target) {
     
     let i;
     let j;
