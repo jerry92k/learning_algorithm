@@ -1,0 +1,31 @@
+{
+  "name": "algorithm",
+  "version": "1.0.0",
+  "description": "cracking the coding interview and leetcode",
+  "main": "app.js",
+  "dependencies": {
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^18.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jerry92k/learning_algorithm.git"
+  },
+  "keywords": [
+    "coding_interview",
+    "algorithm"
+  ],
+  "author": "jerry92",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jerry92k/learning_algorithm/issues"
+  },
+  "homepage": "https://github.com/jerry92k/learning_algorithm#readme"
+}
