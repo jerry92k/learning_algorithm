@@ -1,29 +1,20 @@
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-
+ //ES6 문법으로 자바스크립트에서도 클래스 사용 가능
  class ListNode{
      constructor(val){
          this.val= val===undefined ? null : val;
          this.next=null;
      }
-
-    //  setNext(nextOne){
-    //      this.next=nextOne;
-    //  }
  }
 
 var reverseList = function(head) {
     
-   let reverseNode=new ListNode();
+    let reverseNode = null; //새로운 연결리스트의 head역활을 할 포인터
     for(; head!=null; ){
-        let newNode=new ListNode(head.val);
-        newNode.next=reverseNode;
-        reverseNode=
+        let newNode=new ListNode(head.val); // 새 노드 생성
+        newNode.next = reverseNode; // 
+        reverseNode = newNode;
+        head = head.next; // 다음 연결리스트로 이동
     }
+    return reverseNode
 };
 
