@@ -39,5 +39,3 @@ let fib = function(n) {
        return nowVal;
     }
 };
-
-fib(3);
