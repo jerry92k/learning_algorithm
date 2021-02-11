@@ -1,5 +1,3 @@
-
-
 var maxSubArray = function(nums) {
     
     let maxSum=nums[0];

@@ -12,20 +12,17 @@ let validPalindrome = function(s) {
     for (; i <= (alpLastIdx / 2) >> 0; i++){
 
         if (s[i] != s[alpLastIdx - i]) {
-            break;
+            // 뒤의 한자리를 뺀 케이스와 앞의 한자리를 뺀 케이스로 각각 탐색해봄
+            if (checkSubPalindrome(s.substring(i, alpLastIdx - i)) || checkSubPalindrome(s.substring(i + 1, alpLastIdx - i + 1))) {
+                
+                // 둘중의 한 케이스에서 성립하는 경우가 있으면
+                
+              return true;
+            } 
+            return false;
         }
     }
-    if (i > (alpLastIdx / 2) >> 0) {
-        return true;
-    }
-    if (checkSubPalindrome(s.substring(i, alpLastIdx - i))||checkSubPalindrome(s.substring(i + 1, alpLastIdx - i + 1))) {
-        return true;
-    } // 뒤에 한자리를 빼봄
-    // if (checkSubPalindrome(s.substring(i + 1, alpLastIdx - i + 1))) {
-    //     return true;
-    // } // 앞의 한자리를 빼봄
-    //console.log(s);
-    return false;
+    return true;
 };
 
 let checkSubPalindrome = function (subStr) {
