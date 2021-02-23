@@ -33,7 +33,7 @@ class Solution {
             }else{
                  mergeArray.add(intervals[i]);
             }
-            
+
                 // sorting을 먼저함으로써 필요없어진 아래 로직들
                 //  int j=0;
                 // int merLen=mergeArray.size();
@@ -72,7 +72,12 @@ class Solution {
         int[][] mergeArr=mergeArray.stream()
                                     .map(l -> l)
                                     .toArray(int[][]::new);
-        
+
         return mergeArr;
     }
 }
+/*
+ㅇ Java8 ::(method reference) 표현식 의미
+numbers.forEach(x -> System.out.println(x));
+=> numbers.forEach(System.out::println);
+*/
