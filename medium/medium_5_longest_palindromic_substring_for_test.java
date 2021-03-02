@@ -2,43 +2,43 @@
 // 첫번째 푼 방법과 두번째 푼 방법은 각각 하나의 인덱스에서 출발하여 범위를 넓혀가며 탐색하는 방법이지만,
 // 첫번째꺼는 첫번째 인덱스부터 범위를 좁혀가는 방식이고, 두번째방법은 인덱스를 중심으로 범위를 넓혀가며 제일 긴 str를 구하는 방식이란 차이가 있다.
 
-// class Solution2 {
+class Solution2 {
 
-//     public static void main(String[] args) {
+    public static void main(String[] args) {
 
-//         String s = "bb";
-//         String longestStr = s.substring(0, 1);
-//         int maxLen = 1;
-//         for (int i = 0; i < s.length(); i++) {
-//             for (int j = s.length() - 1; (j > i && j - i + 1 > maxLen); j--) {
-//                 if (Palindrome.checkPalindrome(s, i, j)) {
-//                     if (maxLen < (j - i + 1)) {
-//                         longestStr = s.substring(i, j + 1);
-//                         maxLen = longestStr.length();
-//                     }
-//                     break;
-//                 }
-//             }
-//             // longestPalindrome(s,i);
-//         }
-//         System.out.println(longestStr);
-//     }
-// }
+        String s = "bb";
+        String longestStr = s.substring(0, 1);
+        int maxLen = 1;
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = s.length() - 1; (j > i && j - i + 1 > maxLen); j--) {
+                if (Palindrome.checkPalindrome(s, i, j)) {
+                    if (maxLen < (j - i + 1)) {
+                        longestStr = s.substring(i, j + 1);
+                        maxLen = longestStr.length();
+                    }
+                    break;
+                }
+            }
+            // longestPalindrome(s,i);
+        }
+        System.out.println(longestStr);
+    }
+}
 
-// class Palindrome {
-//     public static boolean checkPalindrome(String s, int startIdx, int endIdx) {
-//         boolean isSame = true;
-//         // for (int k = startIdx; k <= (endIdx + startIdx) / 2; k++) {
-//         while (startIdx < endIdx) {
-//             if (s.charAt(startIdx++) != s.charAt(endIdx--)) {
-//                 isSame = false;
-//                 break;
-//             }
-//             // check palindrome
-//         }
-//         return isSame;
-//     }
-// }
+class Palindrome {
+    public static boolean checkPalindrome(String s, int startIdx, int endIdx) {
+        boolean isSame = true;
+        // for (int k = startIdx; k <= (endIdx + startIdx) / 2; k++) {
+        while (startIdx < endIdx) {
+            if (s.charAt(startIdx++) != s.charAt(endIdx--)) {
+                isSame = false;
+                break;
+            }
+            // check palindrome
+        }
+        return isSame;
+    }
+}
 
 class Solution2 {
 
