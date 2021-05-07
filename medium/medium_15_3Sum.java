@@ -1,58 +1,70 @@
 import java.util.List;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.ArrayList;
 
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
 
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        // HashMap<Integer, Integer> hashMap = new HashMap<>();
 
         Arrays.sort(nums);
-
-        int preNum = nums[0];
-        hashMap.put(preNum, 0);
-        for (int i = 1; i < nums.length; i++) {
-            if (preNum != nums[i]) {
-                preNum = nums[i];
-                hashMap.put(nums[i], i);
-            }
-        }
-
-        int i = -1;
-        int j = nums.length - 1;
         List<List<Integer>> sumList = new ArrayList<List<Integer>>();
-        int temp = 0;
 
-        while (true) {
-
-            i++;
-            if (i >= j) {
-                break;
+        for (int i = 0; i < nums.length && nums[i] <= 0; i++) {
+            if (i == 0 || nums[i - 1] != nums[i]) {
+                // iterateSum(nums, i, sumList);
+                // iterateHashSum
+                iterateHashSum(nums, i, sumList);
             }
-            System.out.println("here");
-            System.out.println("i: " + i + " j:" + j + " nums[i]:" + nums[i] + " nums[j]:" + nums[j]);
-            if (i > 0 && nums[i] != nums[i - 1]) { // 이전값이랑 같으면 계산할 필요 없음
-                temp = 0 - (nums[i] + nums[j]);
-                if (hashMap.containsKey(temp)) {
-                    sumList.add(Arrays.asList(temp, nums[i], nums[j]));
-                }
-            }
+        }
 
-            j--;
-            if (i >= j) {
-                break;
-            }
+        return sumList;
+    }
 
-            System.out.println("here2");
-            System.out.println("i: " + i + " j:" + j + " nums[i]:" + nums[i] + " nums[j]:" + nums[j]);
-            if (nums[j] != nums[j + 1]) {
-                temp = 0 - (nums[i] + nums[j]);
-                if (hashMap.containsKey(temp)) {
-                    sumList.add(Arrays.asList(temp, nums[i], nums[j]));
+    public void iterateSum(int[] nums, int i, List<List<Integer>> sumList) {
+
+        int lo = i + 1;
+        int hi = nums.length - 1;
+
+        while (lo < hi) {
+            if (lo > i + 1 && nums[lo] == nums[lo - 1]) {
+                lo++;
+            } else if (hi < nums.length - 1 && nums[hi] == nums[hi + 1]) {
+                hi--;
+            } else {
+                int tempSum = nums[i] + nums[lo] + nums[hi];
+                if (tempSum < 0) {
+                    lo++;
+                } else if (tempSum > 0) {
+                    hi--;
+                } else {
+                    sumList.add(Arrays.asList(nums[i], nums[lo++], nums[hi--]));
                 }
             }
         }
-        return sumList;
+    }
+
+    public void iterateHashSum(int[] nums, int i, List<List<Integer>> sumList) {
+
+        HashSet<Integer> hashset = new HashSet<Integer>();
+
+        // for (int j = i + 1; j < nums.length; j++) {
+        int j = i + 1;
+        while (j < nums.length) {
+
+            int complement = -nums[i] - nums[j];
+            if (hashset.contains(complement)) {
+                sumList.add(Arrays.asList(nums[i], complement, nums[j]));
+                hashset.add(nums[j++]);
+                while (j < nums.length - 1 && nums[j - 1] == nums[j]) {
+                    j++;
+                }
+            } else {
+                hashset.add(nums[j++]);
+            }
+
+            // }
+        }
     }
 }
