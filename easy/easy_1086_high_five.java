@@ -1,8 +1,5 @@
 import java.util.HashMap;
-import java.util.List;
 import java.util.PriorityQueue;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 /* 
 최소힙을 priority queue로 구현
