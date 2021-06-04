@@ -12,9 +12,6 @@ class Solution {
         }
         return countForVal[amount];
     }
-    /*
-     * [1,2,5] 11
-     */
 
     public void calculateCount(int subAmount, int[] countForVal, int[] coins) {
 
