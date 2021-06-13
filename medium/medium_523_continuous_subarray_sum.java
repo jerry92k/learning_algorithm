@@ -32,13 +32,14 @@ class Solution {
     public boolean checkSubarraySum2(int[] nums, int k) {
 
         for (int i = 0; i < nums.length; i++) {
-        int subArrSum= nums[i];
-        for (int j = i+1; j < nums.length; j++) {
-        subArrSum = subArrSum + nums[j];
-        if (subArrSum==0 || subArrSum >= k && ((subArrSum % k) == 0)) {
-        return true;
-        }
-        }
+            int subArrSum = nums[i];
+            
+            for (int j = i+1; j < nums.length; j++) {
+                subArrSum = subArrSum + nums[j];
+                if (subArrSum==0 || subArrSum >= k && ((subArrSum % k) == 0)) {
+                    return true;
+                }
+            }
         }
         return false;
 

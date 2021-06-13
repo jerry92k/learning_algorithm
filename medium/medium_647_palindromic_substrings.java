@@ -1,8 +1,6 @@
 class Solution {
     public int countSubstrings(String s) {
 
-        //전략 : 배열을 순회하며 i번째를 중심으로 palindromic인지 확인함. 짝수, 홀수인 경우 나눠서 확인
-
         int paldromCount = s.length(); // 문자가 단독으로 사용된 경우 count
         for (int i = 0; i < s.length(); i++) {
 

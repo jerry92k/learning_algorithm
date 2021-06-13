@@ -1,7 +1,7 @@
 class Solution {
 
     // Brute force
-    public int maxProduct2(int[] nums) {
+    public int maxProduct(int[] nums) {
 
         int maxProd = nums[0];
 
@@ -19,32 +19,9 @@ class Solution {
         return maxProd;
     }
 
-    // DP
+    // DP 
 
-    public int maxProduct3(int[] nums) {
-        if (nums.length == 0)
-            return 0;
-
-        int max_so_far = nums[0];
-        int min_so_far = nums[0];
-        int result = max_so_far;
-
-        for (int i = 1; i < nums.length; i++) {
-            int curr = nums[i];
-
-            int temp_max = Math.max(curr, Math.max(max_so_far * curr, min_so_far * curr));
-            min_so_far = Math.min(curr, Math.min(max_so_far * curr, min_so_far * curr));
-
-            max_so_far = temp_max;
-
-            result = Math.max(max_so_far, result);
-        }
-
-        return result;
-    }
-    
-
-    public int maxProduct(int[] nums) {
+    public int maxProduct2(int[] nums) {
         if (nums.length == 0)
             return 0;
 
