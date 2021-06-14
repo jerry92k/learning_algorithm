@@ -132,7 +132,6 @@ class Solution {
                     continue;
                 }
                 ArrayList<Integer> nextDials = checkAllNextDialPossible(dials, i, j);
-                // nextDialqueue.addAll(nextDials);
                 dialstoNextDial.put(dials[i][j], nextDials);
 
             }
@@ -144,29 +143,23 @@ class Solution {
                 if (i == 0) {
                     dp[i][j] = 1;
                 } else {
-                    if(dp[i-1][j]>0){
+                    if (dp[i - 1][j] > 0) {
                         ArrayList<Integer> nextDials = dialstoNextDial.get(j);
                         for (int t = 0; t < nextDials.size(); t++) {
-                            dp[i][nextDials.get(t)]=dp[i][nextDials.get(t)]*dp[i-1][j]
+                            int prevDialTime = nextDials.get(t);
+                            dp[i][prevDialTime] = (dp[i][prevDialTime] + dp[i - 1][j]) % divideVal;
                         }
                     }
                 }
             }
-         
+
         }
-        int sum=0;
-        for (int j=0; j<10; j++){
-            sum+=dp[n-1][j];
+        int sum = 0;
+        for (int j = 0; j < 10; j++) {
+            sum = (sum + dp[n - 1][j]) % divideVal;
         }
 
-        // for (int k = 3; k <= n; k++) {
-        // int queueSize=nextDialqueue.size();
-        // for (int i = 0; i < queueSize; i++) {
-        // nextDialqueue.addAll(dialstoNextDial.get(nextDialqueue.remove()));
-        // }
-        // }
-        
-        return sum % divideVal;
+        return sum;
     }
 
 }
