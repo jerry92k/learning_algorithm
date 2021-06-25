@@ -42,6 +42,27 @@ A -> B -> C -> A -> D -> E -> A -> F -> G -> A -> idle -> idle -> A -> idle -> i
 
 */
 
-public class medium_621_task_scheduler {
+import java.util.*;
 
+class Solution {
+    public int leastInterval(char[] tasks, int n) {
+
+        // [전략]
+        // 1. 정렬해서 동일알파벳끼리 모은다
+        // 2. n개 만큼의 배열을 만들어서, 동일 알파벳 중 제일 앞의 알파벳 index를 저장한다.
+
+        Arrays.sort(tasks);
+
+        ArrayList<Integer> alphabetIdxs = new ArrayList<>();
+
+        char preTask = tasks[0];
+        alphabetIdxs.add(0);
+        for (int i = 0; i < tasks.length; i++) {
+
+            if (preTask != tasks[i]) {
+                alphabetIdxs.add(i);
+                preTask = tasks[i];
+            }
+        }
+    }
 }
