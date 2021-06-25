@@ -8,17 +8,14 @@ Return the maximum area of a piece of cake after you cut at each horizontal and 
  Input: h = 5, w = 4, horizontalCuts = [1,2,4], verticalCuts = [1,3]
 Output: 4 
 Explanation: The figure above represents the given rectangular cake. Red lines are the horizontal and vertical cuts. After you cut the cake, the green piece of cake has the maximum area.
-
-5
-4
-[3]
-[3]
 */
 
 import java.util.*;
 
 class Solution {
     public int maxArea(int h, int w, int[] horizontalCuts, int[] verticalCuts) {
+
+        int moduloVal = 1000000007;
         Arrays.sort(horizontalCuts);
         Arrays.sort(verticalCuts);
 
@@ -35,6 +32,10 @@ class Solution {
             int diff = verticalCuts[i + 1] - verticalCuts[i];
             maxWidth = Math.max(maxWidth, diff);
         }
-        return maxHeight * maxWidth;
+        maxWidth = maxWidth % moduloVal;
+        maxHeight = maxHeight % moduloVal;
+
+        long product=((long) maxWidth*(long) maxHeight)%(long)moduloVal;
+        return (int) product;
     }
 }
