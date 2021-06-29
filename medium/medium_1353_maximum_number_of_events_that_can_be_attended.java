@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashSet;
 
 /*
 Given an array of events where events[i] = [startDayi, endDayi].
@@ -30,30 +31,20 @@ Attend the third event on day 3.
 class Solution {
     public int maxEvents(int[][] events) {
 
-        // Arrays.sort(events, (a,b)->Integer.compare(a[0],b[0]));
-        Arrays.sort(events, (a, b) -> {
-            if (a[0] == b[0]) {
-                return a[1] - b[1];
-            }
-            return a[0] - b[0];
-        });
+        Arrays.sort(events, (a, b) -> a[1] == b[1] ? a[0] - b[0] : a[1] - b[1]);
 
-        int numOfAttended = 0;
-
-        boolean[] occupied = new boolean[100001];
+        // boolean[] occupied = new boolean[100001];
+        HashSet<Integer> occupied = new HashSet<>();
 
         for (int i = 0; i < events.length; i++) {
-            int j = events[i][0];
-            int endDay = events[i][1];
-            while (i <= endDay) {
-                if (!occupied[j]) {
-                    occupied[j] = true;
-                    numOfAttended++;
+            for (int j = events[i][0]; j <= events[i][1]; j++) {
+                if (!occupied.contains(j)) {
+                    occupied.add(j);
                     break;
                 }
-                j++;
+
             }
         }
-        return numOfAttended;
+        return occupied.size();
     }
 }
