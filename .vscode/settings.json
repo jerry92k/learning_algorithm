@@ -12,6 +12,6 @@
   "java.project.sourcePaths": [
     "medium",
     "programmers/dp"
-  ]
-  "editor.fontSize": 13
+  ],
+  "editor.fontSize" : 14
 }
