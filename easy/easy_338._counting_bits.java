@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -39,17 +40,30 @@ Explanation:
 
 class Solution {
     public int[] countBits(int n) {
-        List<List<Integer>> numOfOnes=new ArrayList<>();
-        List<Integer> initList=new ArrayList<>();
-        initList.add(0);
+       // List<Integer> numOfOnes = new ArrayList<>();
+       int[] numOfOnes = new int[n + 1];
+       numOfOnes[0] = 0;
+       if (n >= 1) {
+           numOfOnes[1] = 1;
+       }
 
-        numOfOnes.add(initList);
-        for(int i=0; i<n; i++){
-            List<Integer> nextList=new ArrayList<>();
-            List<Integer> preList=numOfOnes.get(i);
-
-            for(int num : )
-
-        }
+       if (n <= 1) {
+           return numOfOnes;
+       }
+       for (int i = 2; i <= n; i++) {
+           int num = i;
+           int count = 0;
+           while (num > 1) {
+               if ((num & 1) == 1) {
+                   count++;
+               }
+               num = num / 2;
+           }
+           count++;
+           numOfOnes[i] = count;
+           //  numOfOnes.add(count);
+       }
+       return numOfOnes;
+        //return numOfOnes.stream().mapToInt(Integer::intValue).toArray();
     }
 }
