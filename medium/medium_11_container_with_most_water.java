@@ -28,7 +28,6 @@ class Solution {
     public int maxArea2(int[] height) {
 
         int inputLength=height.length;
-      //  int[][] dp = new int[inputLength][inputLength];
         int maxProduct=0;
 
         for (int i = 0; i < inputLength; i++) {

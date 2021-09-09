@@ -37,7 +37,7 @@ class Solution {
                 }
             }
             dialCombinations = conveyStacks;
-            conveyStacks = new Stack<>();
+            conveyStacks.clear();
         }
 
         ArrayList<String> resultDigitsComb = new ArrayList<>();

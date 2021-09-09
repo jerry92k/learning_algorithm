@@ -22,6 +22,7 @@ class Solution {
                 if (diffRow > 1) {
                     count += (diffRow - 1) * 2;
                 }
+                // 이전 줄의 마지막 자리가 어디냐에 따라 달라짐
                 if (lastOccupied < 2) {
                     count += 2;
                 } else if (lastOccupied < 6) {
