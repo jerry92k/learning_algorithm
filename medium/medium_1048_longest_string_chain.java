@@ -46,7 +46,7 @@ class Solution {
 
         Arrays.sort(words, (a, b) -> a.length() - b.length());
 
-        int maxLen = 1;
+        int maxLen = 1
         for (String word : words) {
             int subMaxLen = 1;
             for (int i = 0; i < word.length(); i++) {
